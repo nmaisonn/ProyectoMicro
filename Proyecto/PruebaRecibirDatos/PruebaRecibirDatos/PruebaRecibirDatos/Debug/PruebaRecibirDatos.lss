@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\Parte1\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm Tue Dec 07 07:50:03 2021
+AVRASM ver. 2.2.8  C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm Mon Dec 06 17:43:02 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
@@ -985,381 +985,393 @@ AVRASM ver. 2.2.8  C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Es
                                  
                                  ; ***** END OF FILE ******************************************************
                                  
-                                 ; ProyectoFinalTransmitirDatos.asm
+                                 ; PruebaRecibirDatos.asm
                                  ;
-                                 ; Created: 6/12/2021 18:48:21
+                                 ; Created: 5/12/2021 20:24:20
                                  ; Author : nmais
                                  ;
                                  
-                                 .DSEG
-000100                           almacenamiento: .byte 512
                                  
+                                 .ORG 0x0000
+000000 940c 000a                 	jmp		start		;dirección de comienzo (vector de reset)  
+                                 .ORG 0x0008
+000008 940c 005a                 	jmp Boton_
+                                 	
+                                 .DSEG
+000100                           almacenamiento: .byte 5
+000105                           conParidad:	.byte 10
                                  
                                  .CSEG
-                                 .ORG 0x0000
-000000 940c 0002                 	jmp		start		;dirección de comienzo (vector de reset)  
+                                 	
                                  
                                  start:
-                                 ;configuro los puertos:
-                                 ;	PB2 PB3 PB4 PB5	- son los LEDs del shield
-000002 e30d                      	ldi		r16,	0b00111101	
-000003 b904                      	out		DDRB,	r16			;4 LEDs del shield son salidas (Configuracion leds)
-000004 b905                      	out		PORTB,	r16			;apago los LEDs	(Apago las led's)
-000005 e000                      	ldi		r16,	0b00000000	
-000006 b907                      	out		DDRC,	r16			;3 botones del shield son entradas (Pongo como entrada los 3 botones)
-000007 e902                      	ldi		r16,	0b10010010
-000008 b90a                      	out		DDRD,	r16			;configuro PD.4 y PD.7 como salidas
-000009 b90b                      	out 	PORTD,	r16	
-                                 ;-------------------------------------------------------------------------------------
-                                 
-                                 ;Configuro botones
-00000a e002                      	ldi		r16,	0b00000010
-00000b 9300 0068                 	sts		PCICR,	r16				;Pagina 82
-00000d e00e                      	ldi		r16,	0b00001110
-00000e 9300 006c                 	sts		PCMSK1,		R16			;Pagina 83
-                                 ;---------------------------------------------------------------------------------------
-                                 
                                  ;Configuro USART
                                  	.equ	baud	= 9600			; baudrate
-                                 					;(F_CPU/16/baud) - 1
+                                 				  ;(F_CPU/16/baud) - 1
                                  	.equ	bps	= (16000000/16/baud) - 1	; baud prescale	
-000010 e607                      	ldi	r16,LOW(bps)			; load baud prescale
-000011 e010                      	ldi	r17,HIGH(bps)			; into r17:r16
+00000a e607                      	ldi	r16,LOW(bps)			; load baud prescale
+00000b e010                      	ldi	r17,HIGH(bps)			; into r17:r16
                                  
-000012 9300 00c4                 	sts	UBRR0L,r16			; load baud prescale
-000014 9310 00c5                 	sts	UBRR0H,r17			; to UBRR0
-000016 e008                      	ldi	r16,0b00001000	; enable transmitter
-000017 9300 00c1                 	sts	UCSR0B,r16	
+00000c 9300 00c4                 	sts	UBRR0L,r16			; load baud prescale
+00000e 9310 00c5                 	sts	UBRR0H,r17			; to UBRR0
+000010 e100                      	ldi	r16,(1<<RXEN0)	; enable reciver
+000011 9300 00c1                 	sts	UCSR0B,r16			; and receiver
                                  
-000019 e006                      	ldi r16, 0b00000110
-00001a 9300 00c2                 	sts UCSR0C,r16; and receiver
+000013 e00e                      	ldi r16, (1<<USBS0)|(3<<UCSZ00)
+000014 9300 00c2                 	sts UCSR0C,r16
                                  
-                                 ;--------------------------------------------------------------------------------------------
-00001c e500                      	ldi		r16,	80	;Guardo los primeros 8 bits del registro de 32
-00001d e61c                      	ldi		r17,	108	;Guardo los segundos 8 bits del registro de 32
-00001e e025                      	ldi		r18,	5	;Guardo los	terceros 8 bits del registro de 32
-00001f ec32                      	ldi		r19,	194	;Guardo los ultimos 8 bits del registro de 32
-                                 ;---------------------------------------------------------------------------------------------
+                                 ;Configuro botones
+000016 e002                      	ldi r16, 2
+000017 9300 0068                 	sts PCICR,r16
+000019 e00e                      	ldi r16, 0b00001110
+00001a 9300 006c                 	sts PCMSK1, r16
+                                 ;---------------------------------------------------------------------------------------------------
                                  
-                                 comienzo:
-000020 9478                      	sei
-000021 e0a0                      	ldi r26, low(almacenamiento)
-000022 e0b1                      	ldi r27, high(almacenamiento)
-000023 940e 003a                 	call PseudoAleatorio	;Genera los 512 numeros pseudoAleatorios y los guarda en el buffer
-000025 e0a0                      	ldi r26, low(almacenamiento)
-000026 e0b1                      	ldi r27, high(almacenamiento)
-000027 940e 006d                 	call sumarNumeros	;Numeros sumados(r30(LSB) y r31(MSB)) y separados en 4 registros de 4 bits (r30=r16(LSB)+r17(MSB) y r31=r18(LSB) + r19(MSB))
+                                 ;configuro los puertos:
+                                 ;	PB2 PB3 PB4 PB5	- son los LEDs del shield
+00001c e30d                      	ldi		r16,	0b00111101	
+00001d b904                      	out		DDRB,	r16			;4 LEDs del shield son salidas (Configuracion leds)
+00001e b905                      	out		PORTB,	r16			;apago los LEDs	(Apago las led's)
+00001f e000                      	ldi		r16,	0b00000000	
+000020 b907                      	out		DDRC,	r16			;3 botones del shield son entradas (Pongo como entrada los 3 botones)
+000021 e900                      	ldi		r16,	0b10010000
+000022 b90a                      	out		DDRD,	r16			;configuro PD.4 y PD.7 como salidas
+000023 985f                      	cbi		PORTD,	7			;PD.7 a 0, es el reloj serial, inicializo a 0
+000024 985c                      	cbi		PORTD,	4			;PD.4 a 0, es el reloj del latch, inicializo a 0
+                                 ;-------------------------------------------------------------------------------------
+000025 e0e0                      ldi r30,0
+000026 9478                      sei
+000027 e0fa                      ldi r31, 10
+                                 comenzar:
+000028 0000                      	nop
+000029 30e1                      	cpi r30,1
+00002a f7e9                      	brne comenzar
+00002b e0c5                      	ldi r28, low(conParidad)
+00002c e0d1                      	ldi r29, high(conParidad)
+00002d e0a0                      	ldi r26, low(almacenamiento)
+00002e e0b1                      	ldi r27, high(almacenamiento)
+                                 	ListoParaManipular:
+00002f 940e 0058                 		call sacoConParidad	;Devuelvo el byte en r20
+000031 2f64                      		mov r22, r20		;Tengo en r22 el LSB transmitido 
+                                 		//Hamming al primero
+                                 		//SacarParidades
+000032 940e 0058                 		call sacoConParidad	;Devuelvo el byte en r20
+000034 2f74                      		mov r23, r20		;Tengo en r23 el MSB transmitido 
+                                 		//Hamming del segundo
+                                 		//SacarParidades, dejar solo los datos 
+000035 940e 0075                 		call JuntoDatoParaAlmacenar ;tengo en r24 el dato para almacenar
+000037 940e 0073                 		call Almaceno
+000039 95fa                      		dec r31
+00003a f7a1                      	brne ListoParaManipular
+00003b 940e 004e                 	call sumarNumeros	;Numeros sumados y separados en 4 registros de 4 bits
                                  	loopnum:
-000029 2755                      		clr r21 ;Indica la posicion en el que se va a mostrar
-00002a 2f40                      		mov r20, r16
-00002b 940e 00a6                 		call sacanum	
-00002d 9553                      		inc r21
-00002e 2f41                      		mov r20, r17
-00002f 940e 00a6                 		call sacanum
-000031 9553                      		inc r21
-000032 2f42                      		mov r20, r18
-000033 940e 00a6                 		call sacanum
-000035 9553                      		inc r21
-000036 2f43                      		mov r20, r19
-000037 940e 00a6                 		call sacanum
-000039 cfef                      	rjmp loopnum
+00003d 2755                      		clr r21 ;Indica la posicion en el que se va a mostrar
+00003e 2f40                      		mov r20, r16
+00003f 940e 00ab                 		call sacanum	
+000041 9553                      		inc r21
+000042 2f41                      		mov r20, r17
+000043 940e 00ab                 		call sacanum
+000045 9553                      		inc r21
+000046 2f42                      		mov r20, r18
+000047 940e 00ab                 		call sacanum
+000049 9553                      		inc r21
+00004a 2f43                      		mov r20, r19
+00004b 940e 00ab                 		call sacanum
+00004d cfef                      	rjmp loopnum
                                  
-                                 PseudoAleatorio:
-00003a e890                      	ldi r25, 128
-                                 	loop:
-00003b 940e 0042                 		call GenerarNumeroParaGuardar
-00003d 940e 0068                 		call LlenoBuffer
-00003f 959a                      		dec r25
-000040 f7d1                      		brne loop
-000041 9508                      	ret
-                                 
-                                 ;Genera los numeros pseudoAleatorios. Los mismos los guarda en los registros r16, r17,r18,r19 de 8 bits cada uno
-                                 GenerarNumeroParaGuardar:
-000042 2f40                      	mov r20, r16
-000043 2f51                      	mov r21, r17
-000044 2f62                      	mov r22, r18
-000045 2f73                      	mov r23, r19
-000046 e08d                      	ldi r24, 13
-                                 	loopA:
-000047 1f77                      		rol r23
-000048 1f66                      		rol r22
-000049 1f55                      		rol r21
-00004a 1f44                      		rol r20
-00004b 958a                      		dec r24
-00004c f7d1                      		brne loopA
-00004d 2704                      		eor r16,r20
-00004e 2715                      		eor	r17,r21
-00004f 2726                      		eor	r18,r22
-000050 2737                      		eor r19,r23
-000051 e181                      		ldi r24, 17
-                                 	loopB:
-000052 9577                      		ror r23
-000053 9567                      		ror r22
-000054 9557                      		ror r21
-000055 9547                      		ror r20
-000056 958a                      		dec r24
-000057 f7d1                      		brne loopB
-000058 2704                      		eor r16,r20
-000059 2715                      		eor	r17,r21
-00005a 2726                      		eor	r18,r22
-00005b 2737                      		eor r19,r23
-00005c e085                      		ldi r24,5
-                                 	loopC:
-00005d 1f77                      		rol r23
-00005e 1f66                      		rol r22
-00005f 1f55                      		rol r21
-000060 1f44                      		rol r20
-000061 958a                      		dec r24
-000062 f7d1                      		brne loopC
-000063 2704                      		EOR r16,r20
-000064 2715                      		EOR	r17,r21
-000065 2726                      		EOR	r18,r22
-000066 2737                      		EOR r19,r23
-000067 9508                      	ret
-                                 
-                                 LlenoBuffer:
-000068 930d                      	st X+, r16
-000069 931d                      	st X+, r17
-00006a 932d                      	st X+, r18
-00006b 933d                      	st X+, r19
-00006c 9508                      	ret
-                                 
+                                 //Hamming:
+                                 /*
+                                 	call SacarDatosDelBytePasado	;Obtengo partidad y datos en registros separados
+                                 	call GenerarParidad		;Genero paridad para despues comparar con el byte pasado anteriormente
+                                 	call Comparar			;Comparo que el byte este bien pasado, en caso de no estarlo lo arreglo
+                                 	call SacarleLaParidadParaAlmacenar ;Le saco la paridad a r16 para dejarlo listo para almacenarlo
+                                 */
                                  sumarNumeros:
-00006d e082                      	ldi r24, 2
+00004e e035                      	ldi r19,5
                                  	loop0:
-00006e ef9f                      		ldi r25, 255
-                                 		loop1:
-00006f 9109                      			ld r16, Y+
-000070 e010                      			ldi r17, 0
-000071 0fe0                      			add  r30, r16
-000072 1ff1                      			adc	 r31, r17
-000073 959a                      			dec r25
-000074 f7d1                      			brne loop1
-000075 958a                      			dec r24
-000076 f7b9                      			brne loop0
-                                 			//Los 2 ultimos
-000077 9109                      			ld r16, Y+
-000078 e010                      			ldi r17, 0
-000079 0fe0                      			add  r30, r16
-00007a 1ff1                      			adc	 r31, r17
-00007b 9109                      			ld r16, Y+
-00007c e010                      			ldi r17, 0
-00007d 0fe0                      			add  r30, r16
-00007e 1ff1                      			adc	 r31, r17
-00007f 940e 0082                 			call PreparoLosNums
-000081 9508                      			ret
+00004f 910d                      		ld r16, X+
+000050 e010                      		ldi r17, 0
+000051 0fe0                      		add  r30, r16
+000052 1ff1                      		adc	 r31, r17
+000053 953a                      		dec r19
+000054 f7d1                      	brne loop0
+                                 	//r31= r19+r18. r30= r17+r16
+000055 940e 0087                 	call PreparoLosNums
+000057 9508                      	ret
+                                 
+                                 sacoConParidad:
+000058 9149                      	ld r20, Y+
+000059 9508                      	ret
+                                 	
+                                 
+                                 Boton_:
+00005a b7af                      	in r26, SREG
+00005b b1b6                      	in r27, PINC
+00005c e05a                      	ldi r21,10	;La cantidad de datos que quiero recibir
+                                 	//and r27, r25
+                                 	//breq EmpiezoARecibir
+00005d e0c5                      	ldi r28, low(conParidad)
+00005e e0d1                      	ldi r29, high(conParidad)
+00005f 940e 0062                 	call EmpiezoARecibir
+000061 9518                      	reti
+                                 
+                                 EmpiezoARecibir:
+000062 940e 006a                 	call RecibirDato ;En el registro r14
+000064 940e 0071                 	call AlmacenoConParidad
+000066 955a                      	dec r21
+000067 f7d1                      	brne EmpiezoARecibir
+000068 e0e1                      	ldi r30, 1
+000069 9508                      ret
+                                 
+                                 RecibirDato:
+00006a 9110 00c0                 	lds	r17,UCSR0A				; load UCSR0A into r17
+00006c ff15                      	sbrs r17,UDRE0			; wait for empty transmit buffer
+00006d cffc                      	rjmp RecibirDato			; repeat loop
+                                 
+00006e 90e0 00c6                 	lds	r14,UDR0			; transmited character
+000070 9508                      	ret	;devuelvo r14 con el dato listo para guardar
+                                 
+                                 AlmacenoConParidad:
+000071 92e9                      	st Y+, r14
+000072 9508                      	ret
+                                 
+                                 Almaceno:
+000073 938d                      	st X+, r24
+000074 9508                      	ret
+                                 
+                                 JuntoDatoParaAlmacenar:
+000075 e080                      	ldi r24,0
+                                 	;Pongo los LSB
+000076 9567                      	ror r22
+000077 9587                      	ror r24
+000078 9567                      	ror r22
+000079 9587                      	ror r24
+00007a 9567                      	ror r22
+00007b 9587                      	ror r24
+00007c 9567                      	ror r22
+00007d 9587                      	ror r24
+                                 	;Pongo los LSB
+00007e 9577                      	ror r23
+00007f 9587                      	ror r24
+000080 9577                      	ror r23
+000081 9587                      	ror r24
+000082 9577                      	ror r23
+000083 9587                      	ror r24
+000084 9577                      	ror r23
+000085 9587                      	ror r24
+000086 9508                      	ret ;devuelvo r24 listo para almacenar
                                  
                                  //r31= r19+r18. r30= r17+r16
                                  PreparoLosNums:
-000082 e094                      	ldi r25,4
-000083 e000                      	ldi r16,0	;LSB del r30
-000084 e010                      	ldi r17,0	;MSB del r30
-000085 e020                      	ldi r18,0	;LSB del r31
-000086 e030                      	ldi r19,0	;MSB del r31
-000087 9488                      	clc
+000087 e094                      	ldi r25,4
+000088 e000                      	ldi r16,0	;LSB del r30
+000089 e010                      	ldi r17,0	;MSB del r30
+00008a e020                      	ldi r18,0	;LSB del r31
+00008b e030                      	ldi r19,0	;MSB del r31
+00008c 9488                      	clc
                                  	rotarLSB:
-000088 95e7                      		ror r30
-000089 9507                      		ror r16
-00008a 9488                      		clc
-00008b 95f7                      		ror r31
-00008c 9527                      		ror r18
-00008d 9488                      		clc
-00008e 959a                      		dec r25
-00008f f7c1                      		brne rotarLSB
-000090 e094                      		ldi r25,4
+00008d 95e7                      		ror r30
+00008e 9507                      		ror r16
+00008f 9488                      		clc
+000090 95f7                      		ror r31
+000091 9527                      		ror r18
+000092 9488                      		clc
+000093 959a                      		dec r25
+000094 f7c1                      		brne rotarLSB
+000095 e094                      		ldi r25,4
                                  		rotarMSB:
-000091 95e7                      			ror r30
-000092 9517                      			ror r17
-000093 9488                      			clc
-000094 95f7                      			ror r31
-000095 9537                      			ror r19
-000096 9488                      			clc
-000097 959a                      			dec r25
-000098 f7c1                      			brne rotarMSB
-000099 9488                      			clc
-00009a e094                      			ldi r25,4
+000096 95e7                      			ror r30
+000097 9517                      			ror r17
+000098 9488                      			clc
+000099 95f7                      			ror r31
+00009a 9537                      			ror r19
+00009b 9488                      			clc
+00009c 959a                      			dec r25
+00009d f7c1                      			brne rotarMSB
+00009e 9488                      			clc
+00009f e094                      			ldi r25,4
                                  			loopListos:
-00009b 9488                      				clc 
-00009c 9507                      				ror r16
-00009d 9488                      				clc
-00009e 9517                      				ror r17
-00009f 9488                      				clc
-0000a0 9527                      				ror r18
-0000a1 9488                      				clc 
-0000a2 9537                      				ror r19
-0000a3 959a                      				dec r25
-0000a4 f7b1                      				brne loopListos
-0000a5 9508                      			ret
+0000a0 9488                      				clc 
+0000a1 9507                      				ror r16
+0000a2 9488                      				clc
+0000a3 9517                      				ror r17
+0000a4 9488                      				clc
+0000a5 9527                      				ror r18
+0000a6 9488                      				clc 
+0000a7 9537                      				ror r19
+0000a8 959a                      				dec r25
+0000a9 f7b1                      				brne loopListos
+0000aa 9508                      			ret
                                  
+                                 				
                                  sacanum: 
-0000a6 940e 00cb                 	call ConvertirNum
+0000ab 940e 00d0                 	call ConvertirNum
                                  
-0000a8 3050                      	cpi r21, 0
-0000a9 f0c9                      	breq DisplayPos0
+0000ad 3050                      	cpi r21, 0
+0000ae f0c9                      	breq DisplayPos0
                                  	
-0000aa 3051                      	cpi r21, 1
-0000ab f0c9                      	breq DisplayPos1
+0000af 3051                      	cpi r21, 1
+0000b0 f0c9                      	breq DisplayPos1
                                  
-0000ac 3052                      	cpi r21, 2
-0000ad f0c9                      	breq DisplayPos2
+0000b1 3052                      	cpi r21, 2
+0000b2 f0c9                      	breq DisplayPos2
                                  	
-0000ae 3053                      	cpi r21, 3
-0000af f0c9                      	breq DisplayPos3
+0000b3 3053                      	cpi r21, 3
+0000b4 f0c9                      	breq DisplayPos3
                                  	vuelta:
-0000b0 940e 00b8                 		call	dato_serie		
-0000b2 2f46                      		mov		r20, r22		;r18=r17
-0000b3 940e 00b8                 		call	dato_serie		
-0000b5 9a5c                      		sbi		PORTD, 4		;PD.4 a 1, es LCH el reloj del latch
-0000b6 985c                      		cbi		PORTD, 4		;PD.4 a 0, 
-0000b7 9508                      		ret
+0000b5 940e 00bd                 		call	dato_serie		
+0000b7 2f46                      		mov		r20, r22		;r18=r17
+0000b8 940e 00bd                 		call	dato_serie		
+0000ba 9a5c                      		sbi		PORTD, 4		;PD.4 a 1, es LCH el reloj del latch
+0000bb 985c                      		cbi		PORTD, 4		;PD.4 a 0, 
+0000bc 9508                      		ret
                                  
                                  		;Voy a sacar un byte por el 7seg
                                  		dato_serie:
-0000b8 e0e8                      			ldi		r30, 0x08 ; lo utilizo para contar 8 (8 bits)
+0000bd e0e8                      			ldi		r30, 0x08 ; lo utilizo para contar 8 (8 bits)
                                  
                                  		loop_dato1:
-0000b9 985f                      			cbi		PORTD, 7		;SCLK = 0 reloj en 0
-0000ba 9546                      			lsr		r20				;roto a la derecha r16 y el bit 0 se pone en el C
-0000bb f010                      			brcs	loop_dato2		;salta si C=1
-0000bc 9828                      			cbi		PORTB, 0		;SD = 0 escribo un 0 
-0000bd c001                      			rjmp	loop_dato3
+0000be 985f                      			cbi		PORTD, 7		;SCLK = 0 reloj en 0
+0000bf 9546                      			lsr		r20				;roto a la derecha r16 y el bit 0 se pone en el C
+0000c0 f010                      			brcs	loop_dato2		;salta si C=1
+0000c1 9828                      			cbi		PORTB, 0		;SD = 0 escribo un 0 
+0000c2 c001                      			rjmp	loop_dato3
                                  		loop_dato2:
-0000be 9a28                      			sbi		PORTB, 0		;SD = 1 escribo un 1
+0000c3 9a28                      			sbi		PORTB, 0		;SD = 1 escribo un 1
                                  		loop_dato3:
-0000bf 9a5f                      			sbi		PORTD, 7		;SCLK = 1 reloj en 1
-0000c0 95ea                      			dec		r30
-0000c1 f7b9                      			brne	loop_dato1; cuando r18 llega a 0 corta y vuelve
-0000c2 9508                      			ret
+0000c4 9a5f                      			sbi		PORTD, 7		;SCLK = 1 reloj en 1
+0000c5 95ea                      			dec		r30
+0000c6 f7b9                      			brne	loop_dato1; cuando r18 llega a 0 corta y vuelve
+0000c7 9508                      			ret
                                  
                                  DisplayPos0:
-0000c3 e160                      	ldi r22,0b00010000
-0000c4 cfeb                      	rjmp vuelta
+0000c8 e160                      	ldi r22,0b00010000
+0000c9 cfeb                      	rjmp vuelta
                                  
                                  DisplayPos1:
-0000c5 e260                      	ldi r22,0b00100000
-0000c6 cfe9                      	rjmp vuelta
+0000ca e260                      	ldi r22,0b00100000
+0000cb cfe9                      	rjmp vuelta
                                  
                                  DisplayPos2:
-0000c7 e460                      	ldi r22,0b01000000
-0000c8 cfe7                      	rjmp vuelta
+0000cc e460                      	ldi r22,0b01000000
+0000cd cfe7                      	rjmp vuelta
                                  
                                  DisplayPos3:
-0000c9 e860                      	ldi	r22,0b10000000
-0000ca cfe5                      	rjmp vuelta
+0000ce e860                      	ldi	r22,0b10000000
+0000cf cfe5                      	rjmp vuelta
                                  
                                  ConvertirNum:
                                  
-0000cb 3040                      	cpi r20,0b00000000
-0000cc f0f1                      	breq CambiarA0
+0000d0 3040                      	cpi r20,0b00000000
+0000d1 f0f1                      	breq CambiarA0
                                  	
-0000cd 3041                      	cpi r20,0b00000001
-0000ce f0f1                      	breq CambiarA1
+0000d2 3041                      	cpi r20,0b00000001
+0000d3 f0f1                      	breq CambiarA1
                                  	
-0000cf 3042                      	cpi r20,0b00000010
-0000d0 f0f1                      	breq CambiarA2
+0000d4 3042                      	cpi r20,0b00000010
+0000d5 f0f1                      	breq CambiarA2
                                  	
-0000d1 3043                      	cpi r20,0b00000011
-0000d2 f0f1                      	breq CambiarA3
+0000d6 3043                      	cpi r20,0b00000011
+0000d7 f0f1                      	breq CambiarA3
                                  	
-0000d3 3044                      	cpi r20,0b00000100
-0000d4 f0f1                      	breq CambiarA4
+0000d8 3044                      	cpi r20,0b00000100
+0000d9 f0f1                      	breq CambiarA4
                                  	
-0000d5 3045                      	cpi r20,0b00000101
-0000d6 f0f1                      	breq CambiarA5
+0000da 3045                      	cpi r20,0b00000101
+0000db f0f1                      	breq CambiarA5
                                  	
-0000d7 3046                      	cpi r20,0b00000110
-0000d8 f0f1                      	breq CambiarA6
+0000dc 3046                      	cpi r20,0b00000110
+0000dd f0f1                      	breq CambiarA6
                                  	
-0000d9 3047                      	cpi r20,0b00000111
-0000da f0f1                      	breq CambiarA7
+0000de 3047                      	cpi r20,0b00000111
+0000df f0f1                      	breq CambiarA7
                                  	
-0000db 3048                      	cpi r20,0b00001000
-0000dc f0f1                      	breq CambiarA8
+0000e0 3048                      	cpi r20,0b00001000
+0000e1 f0f1                      	breq CambiarA8
                                  	
-0000dd 3049                      	cpi r20,0b00001001
-0000de f0f1                      	breq CambiarA9
+0000e2 3049                      	cpi r20,0b00001001
+0000e3 f0f1                      	breq CambiarA9
                                  
-0000df 304a                      	cpi r20,0b00001010
-0000e0 f0f1                      	breq CambiarAA
+0000e4 304a                      	cpi r20,0b00001010
+0000e5 f0f1                      	breq CambiarAA
                                  
-0000e1 304b                      	cpi r20,0b00001011
-0000e2 f0f1                      	breq CambiarAB
+0000e6 304b                      	cpi r20,0b00001011
+0000e7 f0f1                      	breq CambiarAB
                                  
-0000e3 304c                      	cpi r20,0b00001100
-0000e4 f0f1                      	breq CambiarAC
+0000e8 304c                      	cpi r20,0b00001100
+0000e9 f0f1                      	breq CambiarAC
                                  
-0000e5 304d                      	cpi r20,0b00001101
-0000e6 f0f1                      	breq CambiarAD
+0000ea 304d                      	cpi r20,0b00001101
+0000eb f0f1                      	breq CambiarAD
                                  
-0000e7 304e                      	cpi r20,0b00001110
-0000e8 f0f1                      	breq CambiarAE
+0000ec 304e                      	cpi r20,0b00001110
+0000ed f0f1                      	breq CambiarAE
                                  
-0000e9 304f                      	cpi r20,0b00001111
-0000ea f0f1                      	breq CambiarAF
+0000ee 304f                      	cpi r20,0b00001111
+0000ef f0f1                      	breq CambiarAF
                                  
                                  CambiarA0:
-0000eb e043                      	ldi r20,0b00000011
-0000ec 9508                      	ret
+0000f0 e043                      	ldi r20,0b00000011
+0000f1 9508                      	ret
                                  
                                  CambiarA1:
-0000ed e94f                      	ldi r20,0b10011111
-0000ee 9508                      	ret
+0000f2 e94f                      	ldi r20,0b10011111
+0000f3 9508                      	ret
                                  
                                  CambiarA2:
-0000ef e245                      	ldi r20,0b00100101
-0000f0 9508                      	ret
+0000f4 e245                      	ldi r20,0b00100101
+0000f5 9508                      	ret
                                  
                                  CambiarA3:
-0000f1 e04d                      	ldi r20,0b00001101
-0000f2 9508                      	ret
+0000f6 e04d                      	ldi r20,0b00001101
+0000f7 9508                      	ret
                                  
                                  CambiarA4:
-0000f3 e949                      	ldi r20,0b10011001
-0000f4 9508                      	ret
+0000f8 e949                      	ldi r20,0b10011001
+0000f9 9508                      	ret
                                  
                                  CambiarA5:
-0000f5 e449                      	ldi r20,0b01001001
-0000f6 9508                      	ret
+0000fa e449                      	ldi r20,0b01001001
+0000fb 9508                      	ret
                                  
                                  CambiarA6:
-0000f7 e441                      	ldi r20,0b01000001
-0000f8 9508                      	ret
+0000fc e441                      	ldi r20,0b01000001
+0000fd 9508                      	ret
                                  
                                  CambiarA7:
-0000f9 e14f                      	ldi r20,0b00011111
-0000fa 9508                      	ret
+0000fe e14f                      	ldi r20,0b00011111
+0000ff 9508                      	ret
                                  
                                  CambiarA8:
-0000fb e041                      	ldi r20,0b00000001
-0000fc 9508                      	ret
+000100 e041                      	ldi r20,0b00000001
+000101 9508                      	ret
                                  
                                  CambiarA9:
-0000fd e149                      	ldi r20,0b00011001
-0000fe 9508                      	ret
+000102 e149                      	ldi r20,0b00011001
+000103 9508                      	ret
                                  
                                  CambiarAA:
-0000ff e141                      	ldi r20,0b00010001
-000100 9508                      	ret
+000104 e141                      	ldi r20,0b00010001
+000105 9508                      	ret
                                  
                                  CambiarAB:
-000101 ec41                      	ldi r20,0b11000001
-000102 9508                      	ret
+000106 ec41                      	ldi r20,0b11000001
+000107 9508                      	ret
                                  
                                  CambiarAC:
-000103 e643                      	ldi r20,0b01100011
-000104 9508                      	ret
+000108 e643                      	ldi r20,0b01100011
+000109 9508                      	ret
                                  
                                  CambiarAD:
-000105 e845                      	ldi r20,0b10000101
-000106 9508                      	ret
+00010a e845                      	ldi r20,0b10000101
+00010b 9508                      	ret
                                  
                                  CambiarAE:
-000107 e641                      	ldi r20,0b01100001
-000108 9508                      	ret
+00010c e641                      	ldi r20,0b01100001
+00010d 9508                      	ret
                                  
                                  CambiarAF:
-000109 e741                      	ldi r20,0b01110001
-00010a 9508                      	ret
+00010e e741                      	ldi r20,0b01110001
 
 
 RESOURCE USE INFORMATION
@@ -1377,40 +1389,40 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega328P" register use summary:
-x  :   4 y  :   3 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   2 y  :   2 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  34 r17:  18 r18:  10 r19:  10 r20:  45 
-r21:  15 r22:  12 r23:   7 r24:   8 r25:  10 r26:   2 r27:   2 r28:   0 
-r29:   0 r30:   7 r31:   5 
-Registers used: 16 out of 35 (45.7%)
+r13:   0 r14:   2 r15:   0 r16:  23 r17:  10 r18:   4 r19:   6 r20:  41 
+r21:  10 r22:  10 r23:   5 r24:  10 r25:   6 r26:   2 r27:   2 r28:   2 
+r29:   2 r30:   8 r31:   5 
+Registers used: 19 out of 35 (54.3%)
 
 "ATmega328P" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   3 add   :   3 adiw  :   0 and   :   0 
+.lds  :   0 .sts  :   0 adc   :   1 add   :   1 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   1 break :   0 breq  :  20 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :  10 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :  12 cbi   :   3 cbr   :   0 
+brne  :   8 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :  16 cbi   :   5 cbr   :   0 
 clc   :  10 clh   :   0 cli   :   0 cln   :   0 clr   :   1 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :  20 cpse  :   0 dec   :  10 eor   :  12 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   3 jmp   :   1 
-ld    :   3 ldd   :   0 ldi   :  54 lds   :   0 lpm   :   0 lsl   :   0 
-lsr   :   1 mov   :   9 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   5 pop   :   0 
-push  :   0 rcall :   0 ret   :  23 reti  :   0 rjmp  :   6 rol   :   8 
-ror   :  16 sbc   :   0 sbci  :   0 sbi   :   3 sbic  :   0 sbis  :   0 
-sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
+cpi   :  21 cpse  :   0 dec   :   7 eor   :   0 fmul  :   0 fmuls :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   2 inc   :   3 jmp   :   2 
+ld    :   2 ldd   :   0 ldi   :  50 lds   :   2 lpm   :   0 lsl   :   0 
+lsr   :   1 mov   :   7 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
+neg   :   0 nop   :   1 or    :   0 ori   :   0 out   :   4 pop   :   0 
+push  :   0 rcall :   0 ret   :  26 reti  :   1 rjmp  :   7 rol   :   0 
+ror   :  28 sbc   :   0 sbci  :   0 sbi   :   3 sbic  :   0 sbis  :   0 
+sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   1 sec   :   0 seh   :   0 
 sei   :   1 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
-sez   :   0 sleep :   0 spm   :   0 st    :   4 std   :   0 sts   :   6 
+sez   :   0 sleep :   0 spm   :   0 st    :   2 std   :   0 sts   :   6 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 27 out of 113 (23.9%)
+Instructions used: 30 out of 113 (26.5%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000216    534      0    534   32768   1.6%
-[.dseg] 0x000100 0x000300      0    512    512    2048  25.0%
+[.cseg] 0x000000 0x000220    532      0    532   32768   1.6%
+[.dseg] 0x000100 0x00010f      0     15     15    2048   0.7%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
 Assembly complete, 0 errors, 0 warnings

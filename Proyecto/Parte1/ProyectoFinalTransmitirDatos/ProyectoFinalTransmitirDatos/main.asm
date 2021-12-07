@@ -7,17 +7,13 @@
 
 .DSEG
 almacenamiento: .byte 512
-conParidad: .byte 1024
+
 
 .CSEG
 .ORG 0x0000
 	jmp		start		;dirección de comienzo (vector de reset)  
-.ORG 0x0008
-	jmp _Boton		;Salto atencion a rutina del boton (Pag 74)  
 
 start:
-
-
 ;configuro los puertos:
 ;	PB2 PB3 PB4 PB5	- son los LEDs del shield
 	ldi		r16,	0b00111101	
@@ -53,7 +49,7 @@ start:
 	sts UCSR0C,r16; and receiver
 
 ;--------------------------------------------------------------------------------------------
-	ldi		r16,	120	;Guardo los primeros 8 bits del registro de 32
+	ldi		r16,	80	;Guardo los primeros 8 bits del registro de 32
 	ldi		r17,	108	;Guardo los segundos 8 bits del registro de 32
 	ldi		r18,	5	;Guardo los	terceros 8 bits del registro de 32
 	ldi		r19,	194	;Guardo los ultimos 8 bits del registro de 32
@@ -64,41 +60,6 @@ comienzo:
 	ldi r26, low(almacenamiento)
 	ldi r27, high(almacenamiento)
 	call PseudoAleatorio	;Genera los 512 numeros pseudoAleatorios y los guarda en el buffer
-	ldi r25,255
-	ldi r26, low(almacenamiento)
-	ldi r27, high(almacenamiento)
-	ldi r28, low(conParidad)
-	ldi r29, high(conParidad)
-AlmacenarParidad:
-	ldi r24,2
-	vueltaDe2:
-		ldi r25,255
-		vueltaDe255:
-			ld r19, X+	;Saco el numero del buffer y lo guardo en r19
-			call SeparoLSBMSB	;Retorno r22= r19 LSB y r23=r19 MSB
-			//Hamming LSB r22
-			mov r19, r22
-			call AlmacenoConParidad
-			//Hamming al MSB r23
-			mov r19, r23
-			call AlmacenoConParidad
-			dec r25
-			brne vueltaDe255
-		dec r24
-		brne vueltaDe2	
-		;hicimos 510 veces
-		ldi r24,2
-		ultimos2:
-			ld r19, X+	;Saco el numero del buffer y lo guardo en r19
-			call SeparoLSBMSB	;Retorno r22= r19 LSB y r23=r19 MSB
-			//Hamming LSB r22
-			mov r19, r22
-			call AlmacenoConParidad
-			//Hamming al MSB r23
-			mov r19, r23
-			call AlmacenoConParidad
-			dec r24
-			brne ultimos2				
 	ldi r26, low(almacenamiento)
 	ldi r27, high(almacenamiento)
 	call sumarNumeros	;Numeros sumados(r30(LSB) y r31(MSB)) y separados en 4 registros de 4 bits (r30=r16(LSB)+r17(MSB) y r31=r18(LSB) + r19(MSB))
@@ -175,35 +136,6 @@ LlenoBuffer:
 	st X+, r17
 	st X+, r18
 	st X+, r19
-	ret
-
-
-
-SeparoLSBMSB:
-	ldi r22,0
-	ldi r23,0
-	ldi r25,4
-	listoR22:
-		ror r19
-		ror r22
-		dec r25
-		brne listoR22
-		ldi r25,4
-		listoR23:
-			ror r19
-			ror r23
-			dec r25
-			brne listoR23
-			ldi r25,4
-			DejoListosLosRegistros:
-				ror r22
-				ror r23
-				dec r25
-				brne DejoListosLosRegistros
-			ret
-
-AlmacenoConParidad:
-	st Y+, r19
 	ret
 
 sumarNumeros:
@@ -441,43 +373,4 @@ CambiarAE:
 
 CambiarAF:
 	ldi r20,0b01110001
-	ret
-
-_Boton:
-	in r6, SREG
-	in r7,PINC
-	//ldi r29,0b00000010
-	call EmpiezoATransferirDatos
-	out SREG, r6
-	reti
-
-EmpiezoATransferirDatos:
-	ldi r28, low(conParidad)
-	ldi r29, high(conParidad)
-	ldi r21,4
-	vueltaDe2T:
-		ldi r25,255
-		vueltaDe255T:
-			ld r24, Y+
-			call TransfieroDato
-			dec r25
-			brne vueltaDe255T
-		dec r21
-		brne vueltaDe2T	
-		;hicimos 1020 veces
-		ldi r21,4
-		ultimos4T:
-			ld r24, Y+
-			call TransfieroDato
-			dec r21
-			brne ultimos4T	
-	ret
-
-		
-TransfieroDato:
-	lds	r25,UCSR0A			; load UCSR0A into r17
-	sbrs r25,UDRE0			; wait for empty transmit buffer
-	rjmp TransfieroDato		; repeat loop
-
-	sts	UDR0,r24			;Transmito lo que hay en r16
 	ret

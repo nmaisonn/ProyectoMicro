@@ -45,15 +45,15 @@ start:
 
 	sts	UBRR0L,r16			; load baud prescale
 	sts	UBRR0H,r17			; to UBRR0
-	ldi	r16,0b00010000 ;(1<<RXEN0)	; enable reciver
+	ldi	r16,0b00010000; enable reciver
 	sts	UCSR0B,r16			; and receiver
 
-	ldi r16,0b00000110 ;(1<<USBS0)|(3<<UCSZ00)
+	ldi r16,0b00000110
 	sts UCSR0C,r16
 ;-------------------------------------------------------------------------------------
 ldi r30,0
 sei
-ldi r31, 2
+ldi r31, 4
 ldi r21,255
 comenzar:
 	nop
@@ -66,44 +66,34 @@ comenzar:
 	while0:
 		ldi r21,255
 		while1:
-			call sacoConParidad	;Devuelvo el byte en r17
-			call SacarDatosDelBytePasado	;Obtengo partidad y datos en registros separados
-			call GenerarParidad		;Genero paridad para despues comparar con el byte pasado anteriormente
-			call Comparar			;Comparo que el byte este bien pasado, en caso de no estarlo lo arreglo
-			call SacarleLaParidadParaAlmacenar ;Le saco la paridad a r16 para dejarlo listo para almacenarlo
-			mov r7,r17				;Tengo en r7 la primera parte del numero (LSB)
 			call sacoConParidad	;Devuelvo el byte en r20
-			call SacarDatosDelBytePasado	;Obtengo partidad y datos en registros separados
-			call GenerarParidad		;Genero paridad para despues comparar con el byte pasado anteriormente
-			call Comparar			;Comparo que el byte este bien pasado, en caso de no estarlo lo arreglo
-			call SacarleLaParidadParaAlmacenar ;Le saco la paridad a r16 para dejarlo listo para almacenarlo
-			mov r8,r17				;Tengo en r8 la segunda parte del numero (MSB)
+			mov r22, r20		;Tengo en r22 el LSB transmitido 
+			//Hamming al primero
+			//SacarParidades
+			call sacoConParidad	;Devuelvo el byte en r20
+			mov r23, r20		;Tengo en r23 el MSB transmitido 
+			//Hamming del segundo
+			//SacarParidades, dejar solo los datos 
 			call JuntoDatoParaAlmacenar ;tengo en r24 el dato para almacenar
 			call Almaceno
 			dec r21
 		brne while1
 		dec r31
 	brne while0
-	ldi r31,2
+	ldi r31,4
 	while2:
-		call sacoConParidad	;Devuelvo el byte en r17
-		call SacarDatosDelBytePasado	;Obtengo partidad y datos en registros separados
-		call GenerarParidad		;Genero paridad para despues comparar con el byte pasado anteriormente
-		call Comparar			;Comparo que el byte este bien pasado, en caso de no estarlo lo arreglo
-		call SacarleLaParidadParaAlmacenar ;Le saco la paridad a r16 para dejarlo listo para almacenarlo
-		mov r7,r17				;Tengo en r7 la primera parte del numero (LSB)
 		call sacoConParidad	;Devuelvo el byte en r20
-		call SacarDatosDelBytePasado	;Obtengo partidad y datos en registros separados
-		call GenerarParidad		;Genero paridad para despues comparar con el byte pasado anteriormente
-		call Comparar			;Comparo que el byte este bien pasado, en caso de no estarlo lo arreglo
-		call SacarleLaParidadParaAlmacenar ;Le saco la paridad a r16 para dejarlo listo para almacenarlo
-		mov r8,r17				;Tengo en r8 la segunda parte del numero (MSB)
+		mov r22, r20		;Tengo en r22 el LSB transmitido 
+		//Hamming al primero
+		//SacarParidades
+		call sacoConParidad	;Devuelvo el byte en r20
+		mov r23, r20		;Tengo en r23 el MSB transmitido 
+		//Hamming del segundo
+		//SacarParidades, dejar solo los datos 
 		call JuntoDatoParaAlmacenar ;tengo en r24 el dato para almacenar
 		call Almaceno
 		dec r31
 	brne while2
-	ldi r26, low(almacenamiento)
-	ldi r27, high(almacenamiento)
 	call sumarNumeros	;Numeros sumados y separados en 4 registros de 4 bits
 	loopnum:
 		clr r21 ;Indica la posicion en el que se va a mostrar
@@ -120,263 +110,19 @@ comenzar:
 		call sacanum
 	rjmp loopnum
 
-sacoConParidad:
-	ld r17, Y+
-	ret
-
-SacarDatosDelBytePasado:
-	ldi r21,0	;D1
-	ldi r22,0	;D2
-	ldi r23,0	;D3
-	ldi r24,0	;D4
-	ldi r25,0	;p3
-	ldi r20,0	;p2
-	ldi r19,0	;p1
-	clc 
-	//p1p2d1p3d2d3d40
-	ror r17	;saco 0
-	ror r17	;saco d4
-	rol r24	;meto d4
-	ror r17	;saco d3
-	rol r23	;meto d3
-	ror r17	;saco d2
-	rol r22	;meto d2
-	ror r17 ;saco p3
-	rol r19 ;meto p3 
-	ror r17	;saco d1
-	rol r21 ;meto d1
-	ror r17 ;saco p2
-	rol r20	;meto p2
-	ror r17	;saco p1
-	rol r25	;meto p1
-	ret	;devuelvo r25=p1,26=p2,27=p3
-
-;Guarda en los registros r5,r6,r7 la paridad 1,2 y 3
-GenerarParidad:
-	mov r5,r21
-	eor r5,r22
-	eor r5,r24	;Ahora en r25 tengo la paridad 1
-	mov r6,r21
-	eor r6,r23
-	eor r6,r24	;Ahora en r26 tengo la paridad 2
-	mov r7,r22
-	eor r7,r23
-	eor r7,r24 ;Ahora en r27 tengo la paridad 3 
-	ret	;retorno r5=p1,r6=p2,r7=p3
-
-
-
-	CambiarElBit3:
-	ldi r18,0
-	mov r16,r21
-	rol r16
-	ror r18
-	rol r16
-	ror r18
-	rol r16
-	brcc Meto1
-	brcs Meto0
-		rol r18
-		ror r16
-		rol r18
-		ror r16
-	rjmp BitCambiado	;retorno r16 arreglado, unicamente falta sacarle la paridad
-
-CambiarElBit5:
-	ldi r18,0
-	mov r16,r22
-	rol r16
-	ror r18
-	rol r16
-	ror r18
-	rol r16
-	ror r18
-	rol r16
-	ror r18
-	rol r16
-	brcc Meto1
-	brcs Meto0
-		rol r18
-		ror r16
-		rol r18
-		ror r16
-		rol r18
-		ror r16
-		rol r18
-		ror r16
-	rjmp BitCambiado	;retorno r16 arreglado, unicamente falta sacarle la paridad
-
-Meto0:
-	clc
-	ror r16
-	clc
-	ret
-
-Meto1:
-	sec
-	ror r16
-	sec
-	ret
-
-ParidadMal:
-	sec
-	ror r31
-	ret
-
-ParidadBien:
-	inc r30
-	clc 
-	rol r31
-	ret
-;Comparo cada uno de los datos de la paridad y arreglo el dato en caso de estar mal
-Comparar:
-	ldi r31,0	;Bit en el que hay error (En caso de ser 0, no hay error)
-	ldi r30,0	;Verifica si entro al error o no
-	;Paridad 3
-	cp r7,r25
-	breq ParidadBien
-	cpi r30,0
-	breq ParidadMal
-	;Paridad 2
-	clr r30
-	cp r6,r20
-	breq ParidadBien
-	cpi r30,0
-	breq ParidadMal
-	;Paridad 1
-	clr r30
-	cp r5,r19
-	breq ParidadBien
-	cpi r30,0
-	breq ParidadMal
-	
-	;Ahora tengo a r31 con la pos que esta mal (unicamente cambio si el error esta en un bit de dato)
-	cpi r31,3
-	breq CambiarElBit3
-	cpi r31,5
-	breq CambiarElBit5
-	cpi r31,6
-	breq CambiarElBit6
-	cpi r31,7
-	breq CambiarElBit7
-	BitCambiado:
-	ret	;Retorno en r16 con paridad, falta sacarsela
-	
-CambiarElBit6:
-	ldi r18,0
-	mov r16,r23
-	rol r16
-	ror r18
-	rol r16
-	ror r18
-	rol r16
-	ror r18
-	rol r16
-	ror r18
-	rol r16
-	ror r18
-	rol r16
-	brcc Meto1
-	brcs Meto0
-		rol r18
-		ror r16
-		rol r18
-		ror r16
-		rol r18
-		ror r16
-		rol r18
-		ror r16
-		rol r18
-		ror r16
-	rjmp BitCambiado	;retorno r16 arreglado, unicamente falta sacarle la paridad
-
-CambiarElBit7:
-	ldi r18,0
-	mov r16,r24
-	rol r16
-	ror r18
-	rol r16
-	ror r18
-	rol r16
-	ror r18
-	rol r16
-	ror r18
-	rol r16
-	ror r18
-	rol r16
-	ror r18
-	rol r16
-	brcc Meto1
-	brcs Meto0
-		rol r18
-		ror r16
-		rol r18
-		ror r16
-		rol r18
-		ror r16
-		rol r18
-		ror r16
-		rol r18
-		ror r16
-		rol r18
-		ror r16
-	rjmp BitCambiado	;retorno r16 arreglado, unicamente falta sacarle la paridad
-
-
-;Le saco la paridad a r16 y lo dejo listo para almacenar
-SacarleLaParidadParaAlmacenar:
-	ldi r17,0
-	ror r16	;saco 0
-	ror r16	;saco d4
-	ror r17	;meto d4
-	ror r16	;saco d3
-	ror r17	;meto d3
-	ror r16	;saco d2
-	ror r17	;meto d2
-	ror r16	;saco p3
-	ror r16	;saco d1
-	ror r17 ;meto d1
-	clc
-	;me muevo 4 lugares para dejar 0000d1d2d3d4
-	ror r17
-	ror r17
-	ror r17
-	ror r17
-	ret
-
-JuntoDatoParaAlmacenar:
-	ldi r16,0
-	;Pongo los MSB
-	ror r8
-	rol r16
-	ror r8
-	rol r16
-	ror r8
-	rol r16
-	ror r8
-	rol r16
-	;Pongo los LSB
-	ror r7
-	rol r16
-	ror r7
-	rol r16
-	ror r7
-	rol r16
-	ror r7
-	rol r16
-	ret ;devuelvo r16 listo para almacenar
-	
-Almaceno:
-	st X+, r16
-	ret
-
-
+//Hamming:
+/*
+	call SacarDatosDelBytePasado	;Obtengo partidad y datos en registros separados
+	call GenerarParidad		;Genero paridad para despues comparar con el byte pasado anteriormente
+	call Comparar			;Comparo que el byte este bien pasado, en caso de no estarlo lo arreglo
+	call SacarleLaParidadParaAlmacenar ;Le saco la paridad a r16 para dejarlo listo para almacenarlo
+*/
 sumarNumeros:
 	ldi r24, 2
 	loop0:
 		ldi r25, 255
 		loop1:
-			ld r16, X+
+			ld r16, Y+
 			ldi r17, 0
 			add  r30, r16
 			adc	 r31, r17
@@ -385,11 +131,11 @@ sumarNumeros:
 			dec r24
 			brne loop0
 			//Los 2 ultimos
-			ld r16, X+
+			ld r16, Y+
 			ldi r17, 0
 			add  r30, r16
 			adc	 r31, r17
-			ld r16, X+
+			ld r16, Y+
 			ldi r17, 0
 			add  r30, r16
 			adc	 r31, r17
@@ -437,7 +183,37 @@ PreparoLosNums:
 				dec r25
 				brne loopListos
 			ret
-							
+
+sacoConParidad:
+	ld r20, Y+
+	ret
+	
+Almaceno:
+	st X+, r24
+	ret
+
+JuntoDatoParaAlmacenar:
+	ldi r24,0
+	;Pongo los LSB
+	ror r22
+	ror r24
+	ror r22
+	ror r24
+	ror r22
+	ror r24
+	ror r22
+	ror r24
+	;Pongo los LSB
+	ror r23
+	ror r24
+	ror r23
+	ror r24
+	ror r23
+	ror r24
+	ror r23
+	ror r24
+	ret ;devuelvo r24 listo para almacenar
+				
 sacanum: 
 	call ConvertirNum
 
@@ -609,8 +385,8 @@ CambiarAF:
 	ret
 
 Boton_:
-	in r24, SREG
-	in r25, PINC
+	in r26, SREG
+	in r27, PINC
 	ldi r21,10	;La cantidad de datos que quiero recibir
 	ldi r28, low(conParidad)
 	ldi r29, high(conParidad)
@@ -622,7 +398,7 @@ EmpiezoARecibir:
 	call AlmacenoConParidad
 	dec r21
 	brne EmpiezoARecibir
-	//ldi r30, 1
+	ldi r30, 1
 ret
 
 RecibirDato:
@@ -630,9 +406,10 @@ RecibirDato:
 	sbrs r17,RXC0				; wait for empty transmit buffer
 	rjmp RecibirDato			; repeat loop
 
-	lds r16,UDR0			; transmited character
-	ret							;devuelvo r14 con el dato listo para guardar
+	lds	r24,UDR0			; transmited character
+	ret	;devuelvo r14 con el dato listo para guardar
 
 AlmacenoConParidad:
-	st Y+, r16
+	st Y+, r24
 	ret
+

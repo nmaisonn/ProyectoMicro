@@ -1,0 +1,34 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>c:\users\nmais\Documents\Atmel Studio\7.0\RecibirDatos\RecibirDatos\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>c:\users\nmais\Documents\Atmel Studio\7.0\RecibirDatos\RecibirDatos\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>c:\users\nmais\Documents\Atmel Studio\7.0\RecibirDatos\RecibirDatos\Debug\RecibirDatos.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>RecibirDatos.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>RecibirDatos.map</FILE>
+  <FILE>RecibirDatos.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <start><FILE>c:\users\nmais\Documents\Atmel Studio\7.0\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>21</LINE></start>
+  <Boton_><FILE>c:\users\nmais\Documents\Atmel Studio\7.0\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>62</LINE></Boton_>
+  <almacenamiento><FILE>c:\users\nmais\Documents\Atmel Studio\7.0\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>15</LINE></almacenamiento>
+  <conParidad><FILE>c:\users\nmais\Documents\Atmel Studio\7.0\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>16</LINE></conParidad>
+  <comenzar><FILE>c:\users\nmais\Documents\Atmel Studio\7.0\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>56</LINE></comenzar>
+  <EmpiezoARecibir><FILE>c:\users\nmais\Documents\Atmel Studio\7.0\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>71</LINE></EmpiezoARecibir>
+  <RecibirDato><FILE>c:\users\nmais\Documents\Atmel Studio\7.0\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>79</LINE></RecibirDato>
+  <AlmacenoConParidad><FILE>c:\users\nmais\Documents\Atmel Studio\7.0\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>87</LINE></AlmacenoConParidad>
+ </LABELS>
+</ASSEMBLER_INFO>

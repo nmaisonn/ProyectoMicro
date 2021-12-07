@@ -53,7 +53,8 @@ start:
 ;-------------------------------------------------------------------------------------
 ldi r30,0
 sei
-ldi r31, 10
+ldi r31, 4
+ldi r21,255
 comenzar:
 	nop
 	cpi r30,1
@@ -62,7 +63,25 @@ comenzar:
 	ldi r29, high(conParidad)
 	ldi r26, low(almacenamiento)
 	ldi r27, high(almacenamiento)
-	ListoParaManipular:
+	while0:
+		ldi r21,255
+		while1:
+			call sacoConParidad	;Devuelvo el byte en r20
+			mov r22, r20		;Tengo en r22 el LSB transmitido 
+			//Hamming al primero
+			//SacarParidades
+			call sacoConParidad	;Devuelvo el byte en r20
+			mov r23, r20		;Tengo en r23 el MSB transmitido 
+			//Hamming del segundo
+			//SacarParidades, dejar solo los datos 
+			call JuntoDatoParaAlmacenar ;tengo en r24 el dato para almacenar
+			call Almaceno
+			dec r21
+		brne while1
+		dec r31
+	brne while0
+	ldi r31,4
+	while2:
 		call sacoConParidad	;Devuelvo el byte en r20
 		mov r22, r20		;Tengo en r22 el LSB transmitido 
 		//Hamming al primero
@@ -74,7 +93,7 @@ comenzar:
 		call JuntoDatoParaAlmacenar ;tengo en r24 el dato para almacenar
 		call Almaceno
 		dec r31
-	brne ListoParaManipular
+	brne while2
 	call sumarNumeros	;Numeros sumados y separados en 4 registros de 4 bits
 	loopnum:
 		clr r21 ;Indica la posicion en el que se va a mostrar
@@ -99,77 +118,29 @@ comenzar:
 	call SacarleLaParidadParaAlmacenar ;Le saco la paridad a r16 para dejarlo listo para almacenarlo
 */
 sumarNumeros:
-	ldi r19,5
+	ldi r24, 2
 	loop0:
-		ld r16, X+
-		ldi r17, 0
-		add  r30, r16
-		adc	 r31, r17
-		dec r19
-	brne loop0
-	//r31= r19+r18. r30= r17+r16
-	call PreparoLosNums
-	ret
-
-sacoConParidad:
-	ld r20, Y+
-	ret
-	
-
-Boton_:
-	in r26, SREG
-	in r27, PINC
-	ldi r21,10	;La cantidad de datos que quiero recibir
-	ldi r28, low(conParidad)
-	ldi r29, high(conParidad)
-	call EmpiezoARecibir
-	reti
-
-EmpiezoARecibir:
-	call RecibirDato ;En el registro r14
-	call AlmacenoConParidad
-	dec r21
-	brne EmpiezoARecibir
-	ldi r30, 1
-ret
-
-RecibirDato:
-	lds	r17,UCSR0A				; load UCSR0A into r17
-	sbrs r17,RXC0				; wait for empty transmit buffer
-	rjmp RecibirDato			; repeat loop
-
-	lds	r24,UDR0			; transmited character
-	ret	;devuelvo r14 con el dato listo para guardar
-
-AlmacenoConParidad:
-	st Y+, r24
-	ret
-
-Almaceno:
-	st X+, r24
-	ret
-
-JuntoDatoParaAlmacenar:
-	ldi r24,0
-	;Pongo los LSB
-	ror r22
-	ror r24
-	ror r22
-	ror r24
-	ror r22
-	ror r24
-	ror r22
-	ror r24
-	;Pongo los LSB
-	ror r23
-	ror r24
-	ror r23
-	ror r24
-	ror r23
-	ror r24
-	ror r23
-	ror r24
-	ret ;devuelvo r24 listo para almacenar
+		ldi r25, 255
+		loop1:
+			ld r16, Y+
+			ldi r17, 0
+			add  r30, r16
+			adc	 r31, r17
+			dec r25
+			brne loop1
+			dec r24
+			brne loop0
+			//Los 2 ultimos
+			ld r16, Y+
+			ldi r17, 0
+			add  r30, r16
+			adc	 r31, r17
+			ld r16, Y+
+			ldi r17, 0
+			add  r30, r16
+			adc	 r31, r17
+			call PreparoLosNums
+			ret
 
 //r31= r19+r18. r30= r17+r16
 PreparoLosNums:
@@ -213,6 +184,35 @@ PreparoLosNums:
 				brne loopListos
 			ret
 
+sacoConParidad:
+	ld r20, Y+
+	ret
+	
+Almaceno:
+	st X+, r24
+	ret
+
+JuntoDatoParaAlmacenar:
+	ldi r24,0
+	;Pongo los LSB
+	ror r22
+	ror r24
+	ror r22
+	ror r24
+	ror r22
+	ror r24
+	ror r22
+	ror r24
+	;Pongo los LSB
+	ror r23
+	ror r24
+	ror r23
+	ror r24
+	ror r23
+	ror r24
+	ror r23
+	ror r24
+	ret ;devuelvo r24 listo para almacenar
 				
 sacanum: 
 	call ConvertirNum
@@ -383,3 +383,33 @@ CambiarAE:
 CambiarAF:
 	ldi r20,0b01110001
 	ret
+
+Boton_:
+	in r26, SREG
+	in r27, PINC
+	ldi r21,10	;La cantidad de datos que quiero recibir
+	ldi r28, low(conParidad)
+	ldi r29, high(conParidad)
+	call EmpiezoARecibir
+	reti
+
+EmpiezoARecibir:
+	call RecibirDato ;En el registro r14
+	call AlmacenoConParidad
+	dec r21
+	brne EmpiezoARecibir
+	ldi r30, 1
+ret
+
+RecibirDato:
+	lds	r17,UCSR0A				; load UCSR0A into r17
+	sbrs r17,RXC0				; wait for empty transmit buffer
+	rjmp RecibirDato			; repeat loop
+
+	lds	r24,UDR0			; transmited character
+	ret	;devuelvo r14 con el dato listo para guardar
+
+AlmacenoConParidad:
+	st Y+, r24
+	ret
+

@@ -1,0 +1,72 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\Debug\PruebaRecibirDatos.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>PruebaRecibirDatos.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>PruebaRecibirDatos.map</FILE>
+  <FILE>PruebaRecibirDatos.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <start><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>21</LINE></start>
+  <Boton_><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>121</LINE></Boton_>
+  <almacenamiento><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>15</LINE></almacenamiento>
+  <conParidad><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>16</LINE></conParidad>
+  <comenzar><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>59</LINE></comenzar>
+  <ListoParaManipular><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>67</LINE></ListoParaManipular>
+  <sacoConParidad><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>116</LINE></sacoConParidad>
+  <JuntoDatoParaAlmacenar><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>156</LINE></JuntoDatoParaAlmacenar>
+  <Almaceno><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>152</LINE></Almaceno>
+  <sumarNumeros><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>103</LINE></sumarNumeros>
+  <loopnum><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>81</LINE></loopnum>
+  <sacanum><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>221</LINE></sacanum>
+  <loop0><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>105</LINE></loop0>
+  <PreparoLosNums><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>179</LINE></PreparoLosNums>
+  <EmpiezoARecibir><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>132</LINE></EmpiezoARecibir>
+  <RecibirDato><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>140</LINE></RecibirDato>
+  <AlmacenoConParidad><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>148</LINE></AlmacenoConParidad>
+  <rotarLSB><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>186</LINE></rotarLSB>
+  <rotarMSB><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>196</LINE></rotarMSB>
+  <loopListos><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>207</LINE></loopListos>
+  <ConvertirNum><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>277</LINE></ConvertirNum>
+  <DisplayPos0><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>261</LINE></DisplayPos0>
+  <DisplayPos1><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>265</LINE></DisplayPos1>
+  <DisplayPos2><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>269</LINE></DisplayPos2>
+  <DisplayPos3><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>273</LINE></DisplayPos3>
+  <vuelta><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>235</LINE></vuelta>
+  <dato_serie><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>244</LINE></dato_serie>
+  <loop_dato1><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>247</LINE></loop_dato1>
+  <loop_dato2><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>253</LINE></loop_dato2>
+  <loop_dato3><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>255</LINE></loop_dato3>
+  <CambiarA0><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>327</LINE></CambiarA0>
+  <CambiarA1><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>331</LINE></CambiarA1>
+  <CambiarA2><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>335</LINE></CambiarA2>
+  <CambiarA3><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>339</LINE></CambiarA3>
+  <CambiarA4><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>343</LINE></CambiarA4>
+  <CambiarA5><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>347</LINE></CambiarA5>
+  <CambiarA6><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>351</LINE></CambiarA6>
+  <CambiarA7><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>355</LINE></CambiarA7>
+  <CambiarA8><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>359</LINE></CambiarA8>
+  <CambiarA9><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>363</LINE></CambiarA9>
+  <CambiarAA><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>367</LINE></CambiarAA>
+  <CambiarAB><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>371</LINE></CambiarAB>
+  <CambiarAC><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>375</LINE></CambiarAC>
+  <CambiarAD><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>379</LINE></CambiarAD>
+  <CambiarAE><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>383</LINE></CambiarAE>
+  <CambiarAF><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\PruebaRecibirDatos\PruebaRecibirDatos\PruebaRecibirDatos\main.asm</FILE><LINE>387</LINE></CambiarAF>
+ </LABELS>
+</ASSEMBLER_INFO>

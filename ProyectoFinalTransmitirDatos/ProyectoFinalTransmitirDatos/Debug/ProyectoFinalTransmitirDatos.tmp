@@ -1,0 +1,87 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\Debug\ProyectoFinalTransmitirDatos.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>ProyectoFinalTransmitirDatos.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>ProyectoFinalTransmitirDatos.map</FILE>
+  <FILE>ProyectoFinalTransmitirDatos.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <start><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>20</LINE></start>
+  <_Boton><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>445</LINE></_Boton>
+  <almacenamiento><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>14</LINE></almacenamiento>
+  <conParidad><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>15</LINE></conParidad>
+  <comienzo><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>61</LINE></comienzo>
+  <PseudoAleatorio><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>119</LINE></PseudoAleatorio>
+  <AlmacenarParidad><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>71</LINE></AlmacenarParidad>
+  <vueltaDe2><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>73</LINE></vueltaDe2>
+  <vueltaDe255><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>75</LINE></vueltaDe255>
+  <SeparoLSBMSB><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>181</LINE></SeparoLSBMSB>
+  <AlmacenoConParidad><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>204</LINE></AlmacenoConParidad>
+  <ultimos2><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>90</LINE></ultimos2>
+  <sumarNumeros><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>208</LINE></sumarNumeros>
+  <loopnum><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>104</LINE></loopnum>
+  <sacanum><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>275</LINE></sacanum>
+  <loop><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>121</LINE></loop>
+  <GenerarNumeroParaGuardar><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>129</LINE></GenerarNumeroParaGuardar>
+  <LlenoBuffer><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>172</LINE></LlenoBuffer>
+  <loopA><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>135</LINE></loopA>
+  <loopB><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>147</LINE></loopB>
+  <loopC><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>159</LINE></loopC>
+  <listoR22><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>185</LINE></listoR22>
+  <listoR23><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>191</LINE></listoR23>
+  <DejoListosLosRegistros><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>197</LINE></DejoListosLosRegistros>
+  <loop0><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>210</LINE></loop0>
+  <loop1><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>212</LINE></loop1>
+  <PreparoLosNums><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>234</LINE></PreparoLosNums>
+  <rotarLSB><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>241</LINE></rotarLSB>
+  <rotarMSB><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>251</LINE></rotarMSB>
+  <loopListos><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>262</LINE></loopListos>
+  <ConvertirNum><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>331</LINE></ConvertirNum>
+  <DisplayPos0><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>315</LINE></DisplayPos0>
+  <DisplayPos1><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>319</LINE></DisplayPos1>
+  <DisplayPos2><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>323</LINE></DisplayPos2>
+  <DisplayPos3><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>327</LINE></DisplayPos3>
+  <vuelta><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>289</LINE></vuelta>
+  <dato_serie><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>298</LINE></dato_serie>
+  <loop_dato1><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>301</LINE></loop_dato1>
+  <loop_dato2><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>307</LINE></loop_dato2>
+  <loop_dato3><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>309</LINE></loop_dato3>
+  <CambiarA0><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>381</LINE></CambiarA0>
+  <CambiarA1><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>385</LINE></CambiarA1>
+  <CambiarA2><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>389</LINE></CambiarA2>
+  <CambiarA3><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>393</LINE></CambiarA3>
+  <CambiarA4><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>397</LINE></CambiarA4>
+  <CambiarA5><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>401</LINE></CambiarA5>
+  <CambiarA6><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>405</LINE></CambiarA6>
+  <CambiarA7><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>409</LINE></CambiarA7>
+  <CambiarA8><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>413</LINE></CambiarA8>
+  <CambiarA9><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>417</LINE></CambiarA9>
+  <CambiarAA><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>421</LINE></CambiarAA>
+  <CambiarAB><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>425</LINE></CambiarAB>
+  <CambiarAC><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>429</LINE></CambiarAC>
+  <CambiarAD><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>433</LINE></CambiarAD>
+  <CambiarAE><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>437</LINE></CambiarAE>
+  <CambiarAF><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>441</LINE></CambiarAF>
+  <EmpiezoATransferirDatos><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>453</LINE></EmpiezoATransferirDatos>
+  <vueltaDe2T><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>457</LINE></vueltaDe2T>
+  <vueltaDe255T><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>459</LINE></vueltaDe255T>
+  <TransfieroDato><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>476</LINE></TransfieroDato>
+  <ultimos4T><FILE>C:\Users\nmais\Documents\Atmel Studio\7.0\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>468</LINE></ultimos4T>
+ </LABELS>
+</ASSEMBLER_INFO>

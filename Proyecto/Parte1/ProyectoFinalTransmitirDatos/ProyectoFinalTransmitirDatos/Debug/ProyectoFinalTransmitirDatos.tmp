@@ -1,0 +1,87 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\Debug\ProyectoFinalTransmitirDatos.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>ProyectoFinalTransmitirDatos.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>ProyectoFinalTransmitirDatos.map</FILE>
+  <FILE>ProyectoFinalTransmitirDatos.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <almacenamiento><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>9</LINE></almacenamiento>
+  <conParidad><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>10</LINE></conParidad>
+  <start><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>18</LINE></start>
+  <_Boton><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>446</LINE></_Boton>
+  <comienzo><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>62</LINE></comienzo>
+  <PseudoAleatorio><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>120</LINE></PseudoAleatorio>
+  <AlmacenarParidad><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>72</LINE></AlmacenarParidad>
+  <vueltaDe2><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>74</LINE></vueltaDe2>
+  <vueltaDe255><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>76</LINE></vueltaDe255>
+  <SeparoLSBMSB><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>182</LINE></SeparoLSBMSB>
+  <AlmacenoConParidad><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>205</LINE></AlmacenoConParidad>
+  <ultimos2><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>91</LINE></ultimos2>
+  <sumarNumeros><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>209</LINE></sumarNumeros>
+  <loopnum><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>105</LINE></loopnum>
+  <sacanum><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>276</LINE></sacanum>
+  <loop><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>122</LINE></loop>
+  <GenerarNumeroParaGuardar><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>130</LINE></GenerarNumeroParaGuardar>
+  <LlenoBuffer><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>173</LINE></LlenoBuffer>
+  <loopA><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>136</LINE></loopA>
+  <loopB><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>148</LINE></loopB>
+  <loopC><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>160</LINE></loopC>
+  <listoR22><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>186</LINE></listoR22>
+  <listoR23><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>192</LINE></listoR23>
+  <DejoListosLosRegistros><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>198</LINE></DejoListosLosRegistros>
+  <loop0><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>211</LINE></loop0>
+  <loop1><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>213</LINE></loop1>
+  <PreparoLosNums><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>235</LINE></PreparoLosNums>
+  <rotarLSB><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>242</LINE></rotarLSB>
+  <rotarMSB><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>252</LINE></rotarMSB>
+  <loopListos><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>263</LINE></loopListos>
+  <ConvertirNum><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>332</LINE></ConvertirNum>
+  <DisplayPos0><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>316</LINE></DisplayPos0>
+  <DisplayPos1><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>320</LINE></DisplayPos1>
+  <DisplayPos2><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>324</LINE></DisplayPos2>
+  <DisplayPos3><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>328</LINE></DisplayPos3>
+  <vuelta><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>290</LINE></vuelta>
+  <dato_serie><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>299</LINE></dato_serie>
+  <loop_dato1><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>302</LINE></loop_dato1>
+  <loop_dato2><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>308</LINE></loop_dato2>
+  <loop_dato3><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>310</LINE></loop_dato3>
+  <CambiarA0><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>382</LINE></CambiarA0>
+  <CambiarA1><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>386</LINE></CambiarA1>
+  <CambiarA2><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>390</LINE></CambiarA2>
+  <CambiarA3><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>394</LINE></CambiarA3>
+  <CambiarA4><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>398</LINE></CambiarA4>
+  <CambiarA5><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>402</LINE></CambiarA5>
+  <CambiarA6><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>406</LINE></CambiarA6>
+  <CambiarA7><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>410</LINE></CambiarA7>
+  <CambiarA8><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>414</LINE></CambiarA8>
+  <CambiarA9><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>418</LINE></CambiarA9>
+  <CambiarAA><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>422</LINE></CambiarAA>
+  <CambiarAB><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>426</LINE></CambiarAB>
+  <CambiarAC><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>430</LINE></CambiarAC>
+  <CambiarAD><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>434</LINE></CambiarAD>
+  <CambiarAE><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>438</LINE></CambiarAE>
+  <CambiarAF><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>442</LINE></CambiarAF>
+  <EmpiezoATransferirDatos><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>454</LINE></EmpiezoATransferirDatos>
+  <vueltaDe2T><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>458</LINE></vueltaDe2T>
+  <vueltaDe255T><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>460</LINE></vueltaDe255T>
+  <TransfieroDato><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>477</LINE></TransfieroDato>
+  <ultimos4T><FILE>C:\Users\nmais\OneDrive - Universidad Católica del Uruguay\Escritorio\Proyecto\ProyectoFinalTransmitirDatos\ProyectoFinalTransmitirDatos\main.asm</FILE><LINE>469</LINE></ultimos4T>
+ </LABELS>
+</ASSEMBLER_INFO>

@@ -1,0 +1,34 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\nmais\Desktop\RecibirDatos\RecibirDatos\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>D:/TodosLosProgramas\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>D:\TodosLosProgramas\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\nmais\Desktop\RecibirDatos\RecibirDatos\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>D:/TodosLosProgramas\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\nmais\Desktop\RecibirDatos\RecibirDatos\Debug\RecibirDatos.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>RecibirDatos.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>RecibirDatos.map</FILE>
+  <FILE>RecibirDatos.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <almacenamiento><FILE>C:\Users\nmais\Desktop\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>11</LINE></almacenamiento>
+  <conParidad><FILE>C:\Users\nmais\Desktop\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>12</LINE></conParidad>
+  <start><FILE>C:\Users\nmais\Desktop\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>20</LINE></start>
+  <Boton_><FILE>C:\Users\nmais\Desktop\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>62</LINE></Boton_>
+  <comenzar><FILE>C:\Users\nmais\Desktop\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>57</LINE></comenzar>
+  <EmpiezoARecibir><FILE>C:\Users\nmais\Desktop\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>71</LINE></EmpiezoARecibir>
+  <RecibirDato><FILE>C:\Users\nmais\Desktop\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>79</LINE></RecibirDato>
+  <AlmacenoConParidad><FILE>C:\Users\nmais\Desktop\RecibirDatos\RecibirDatos\main.asm</FILE><LINE>87</LINE></AlmacenoConParidad>
+ </LABELS>
+</ASSEMBLER_INFO>
